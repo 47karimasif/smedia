@@ -1,9 +1,10 @@
-import { ApolloServer } from "apollo-server";
-import { typeDefs } from "./src/typeDefs.js";
-import resolvers from "./src/resolvers/index.js";
-import pkg from "@prisma/client";
-
-const { PrismaClient } = pkg;
+const { ApolloServer } = require("apollo-server");
+const { PrismaClient } = require("@prisma/client");
+const { applyMiddleware } = require("graphql-middleware");
+const { makeExecutableSchema } = require("graphql-tools");
+const typeDefs = require("./src/typeDefs");
+const resolvers = require("./src/resolvers");
+const permisions = require("./src/permissions");
 
 const prisma = new PrismaClient();
 
@@ -14,9 +15,16 @@ function createContext(req) {
   };
 }
 
+const schema = applyMiddleware(
+  makeExecutableSchema({
+    typeDefs,
+    resolvers,
+  }),
+  permisions
+);
+
 const server = new ApolloServer({
-  typeDefs,
-  resolvers,
+  schema,
   context: createContext,
 });
 

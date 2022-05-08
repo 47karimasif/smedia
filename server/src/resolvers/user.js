@@ -1,15 +1,19 @@
-import bcryptjs from "bcryptjs";
-const { compare, hash } = bcryptjs;
-import jsonwebtoken from "jsonwebtoken";
-const { sign } = jsonwebtoken;
+const { compare, hash } = require("bcryptjs");
+const { sign } = require("jsonwebtoken");
+const { getUserId, APP_SECRET } = require("../permissions/Utils");
 
-const APP_SECRET = "appsecret321";
-
-const userResolver = {
+module.exports = {
   Query: {
-    me: () => {
-      return { name: "asif" };
+    me: (parent, args, context) => {
+      console.log(context);
+      const userId = getUserId(context);
+      return context.prisma.User.findUnique({
+        where: {
+          id: Number(userId),
+        },
+      });
     },
+
     allUsers: (parent, args, context) => {
       return context.prisma.User.findMany();
     },
@@ -52,5 +56,3 @@ const userResolver = {
     },
   },
 };
-
-export default userResolver;
