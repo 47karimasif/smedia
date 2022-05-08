@@ -6,6 +6,7 @@ export const typeDefs = gql`
     name: String!
     email: String!
     password: String!
+    token: String
   }
 
   type Post {
@@ -18,9 +19,13 @@ export const typeDefs = gql`
   }
 
   input signupInput {
-    name: String
-    email: String
-    password: String
+    name: String!
+    email: String!
+    password: String!
+  }
+  input loginInput {
+    email: String!
+    password: String!
   }
 
   type Query {
@@ -29,5 +34,6 @@ export const typeDefs = gql`
   }
   type Mutation {
     signup(input: signupInput): User!
+    login(input: loginInput): User!
   }
 `;
