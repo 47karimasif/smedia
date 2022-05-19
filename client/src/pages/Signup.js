@@ -1,7 +1,7 @@
 import { gql, useMutation } from "@apollo/client";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import React, { useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import * as Yup from "yup";
 import { AuthContext } from "../context/auth";
 
@@ -42,8 +42,40 @@ function Signup() {
       .required("Name Required"),
   });
 
+  const fieldStyle = {
+    height: "40px",
+    marginBottom: "8px",
+    borderRadius: "4px",
+    padding: "4px 16px",
+  };
+
+  const errorStyle = {
+    marginBottom: "16px",
+    color: "red",
+  };
+  const btnStyle = {
+    borderRadius: "8px",
+    padding: "16px",
+    background: "#3846FE",
+    color: "#FFF",
+    border: "2px solid #F2F5F9",
+    fontSize: "20px",
+    "&:hover": {
+      cursor: "pointer",
+    },
+    marginTop: "6px",
+  };
+
   return (
-    <div>
+    <div
+      style={{
+        width: "400px",
+        display: "flex",
+        flexDirection: "column",
+        margin: "auto",
+        alignItems: "center",
+      }}
+    >
       <h1>Signup</h1>
       <Formik
         initialValues={initialValues}
@@ -59,22 +91,55 @@ function Signup() {
           history.push("/users");
         }}
       >
-        <Form>
-          <Field name="email" type="text" placeholder="Email" />
-          <ErrorMessage name="email" component={"div"} />
-          <Field name="name" type="text" placeholder="Name" />
-          <ErrorMessage name="name" component={"div"} />
-          <Field name="password" type="password" placeholder="Password" />
-          <ErrorMessage name="password" component={"div"} />
+        <Form
+          style={{
+            width: "400px",
+            display: "flex",
+            flexDirection: "column",
+            margin: "auto",
+          }}
+        >
+          <Field
+            name="email"
+            type="text"
+            placeholder="Email"
+            style={fieldStyle}
+          />
+          <ErrorMessage name="email" component={"div"} style={errorStyle} />
+          <Field
+            name="name"
+            type="text"
+            placeholder="Name"
+            style={fieldStyle}
+          />
+          <ErrorMessage name="name" component={"div"} style={errorStyle} />
+          <Field
+            name="password"
+            type="password"
+            placeholder="Password"
+            style={fieldStyle}
+          />
+          <ErrorMessage name="password" component={"div"} style={errorStyle} />
           <Field
             name="confirmPassword"
             type="password"
             placeholder="Confirm Password"
+            style={fieldStyle}
           />
-          <ErrorMessage name="confirmPassword" component={"div"} />
-          <button type="submit">Signup</button>
+          <ErrorMessage
+            name="confirmPassword"
+            component={"div"}
+            style={errorStyle}
+          />
+          <button type="submit" style={btnStyle}>
+            Signup
+          </button>
         </Form>
       </Formik>
+      <div className="register">
+        <h4 style={{ marginBottom: "8px" }}>Already have an account?</h4>
+        <Link to="/login">Log in</Link>
+      </div>
     </div>
   );
 }

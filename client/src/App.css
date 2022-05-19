@@ -36,3 +36,23 @@
     transform: rotate(360deg);
   }
 }
+.register {
+  text-align: center;
+}
+
+button:hover {
+  background: var(--button-hover-color);
+}
+button:active span {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+button span:focus {
+  outline: 0;
+}
+button:disabled {
+  opacity: 0.5;
+}
+a {
+  text-decoration: none;
+  color: "#3846FE";
+}
