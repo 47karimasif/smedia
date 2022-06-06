@@ -5,7 +5,6 @@ const { getUserId, APP_SECRET } = require("../permissions/Utils");
 module.exports = {
   Query: {
     me: (parent, args, context) => {
-      console.log(context);
       const userId = getUserId(context);
       return context.prisma.User.findUnique({
         where: {
@@ -30,6 +29,7 @@ module.exports = {
           password: hashedPassword,
         },
       });
+
       return {
         token: sign({ userId: user.id }, APP_SECRET),
         ...user,

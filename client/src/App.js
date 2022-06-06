@@ -18,6 +18,7 @@ import {
 } from "@apollo/client";
 
 import { setContext } from "@apollo/client/link/context";
+import Profile from "./pages/Profile";
 
 const httpLink = createHttpLink({
   uri: "http://localhost:4000",
@@ -48,6 +49,7 @@ function App() {
             <PublicRoute exact path="/" component={Landing} />
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <PrivateRoute exact path="/users" component={Users} />
+            <PrivateRoute exact path="/profile" component={Profile} />
             <PublicRoute exact path="/signup" component={Signup} />
             <PublicRoute exact path="/login" component={Login} />
           </Switch>

@@ -7,15 +7,17 @@ module.exports = gql`
     email: String!
     password: String!
     token: String
+    Profile: Profile
   }
 
-  type Post {
-    id: ID
-    createdAt: String
-    updatedAt: String
-    title: String
-    published: Boolean
-    viewCount: Int
+  type Profile {
+    avatar: String
+    bio: String
+    id: Int!
+    published: Boolean!
+    title: String!
+    location: String
+    website: String
   }
 
   input signupInput {
@@ -35,5 +37,18 @@ module.exports = gql`
   type Mutation {
     signup(input: signupInput): User!
     login(input: loginInput): User!
+    createProfile(
+      avatar: String
+      bio: String
+      location: String
+      website: String
+    ): Profile
+    updateProfile(
+      avatar: String
+      bio: String
+      id: Int
+      location: String
+      website: String
+    ): Profile
   }
 `;
