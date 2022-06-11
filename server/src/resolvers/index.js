@@ -3,6 +3,16 @@ const profileResolver = require("./profile");
 const tweetResolver = require("./tweet");
 
 module.exports = {
+  Tweet: {
+    author: async (parent, args, context) => {
+      const author = await context.prisma.User.findUnique({
+        where: {
+          id: Number(parent.authorId),
+        },
+      });
+      return author;
+    },
+  },
   User: {
     Profile: async (parent, args, context) => {
       const profile = await context.prisma.Profile.findUnique({

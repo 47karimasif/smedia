@@ -13,7 +13,12 @@ module.exports = shield({
     me: rules.isAuthenticatedUser,
   },
   Mutation: {},
+
+  // comment these rules to check in local
   User: {
     Profile: rules.isAuthenticatedUser,
+  },
+  Tweet: {
+    author: rules.isAuthenticatedUser,
   },
 });

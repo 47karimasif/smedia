@@ -3,14 +3,15 @@ import { Link } from "react-router-dom";
 import favicon from "../styles/assets/twitter-logo.png";
 import "../styles/leftNav.css";
 import Tweet from "./Tweet";
+import Logout from "./Logout";
 
 function LeftNav() {
   return (
     <div>
-      <Link to="/users">
+      <Link to="/home">
         <img src={favicon} alt="logo" style={{ width: "40px" }} />
       </Link>
-      <Link to="/users">
+      <Link to="/home">
         <h2>
           <i className="fa fa-home" aria-hidden="true"></i>{" "}
           <span className="title">Home</span>
@@ -41,6 +42,7 @@ function LeftNav() {
         </h2>
       </Link>
       <Tweet />
+      <Logout />
     </div>
   );
 }

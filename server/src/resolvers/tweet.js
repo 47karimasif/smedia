@@ -1,7 +1,11 @@
 const { getUserId } = require("../permissions/Utils");
 
 module.exports = {
-  Query: {},
+  Query: {
+    Tweets: (parent, args, context) => {
+      return context.prisma.Tweet.findMany();
+    },
+  },
 
   Mutation: {
     createTweet: async (parent, { content }, context) => {

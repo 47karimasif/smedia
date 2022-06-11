@@ -24,6 +24,7 @@ module.exports = gql`
     id: Int!
     content: String
     author: User
+    createdAt: String
   }
 
   input signupInput {
@@ -39,6 +40,7 @@ module.exports = gql`
   type Query {
     me: User!
     allUsers: [User!]
+    Tweets: [Tweet!]
   }
   type Mutation {
     signup(input: signupInput): User!
