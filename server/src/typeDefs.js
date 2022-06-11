@@ -20,6 +20,12 @@ module.exports = gql`
     website: String
   }
 
+  type Tweet {
+    id: Int!
+    content: String
+    author: User
+  }
+
   input signupInput {
     name: String!
     email: String!
@@ -50,5 +56,6 @@ module.exports = gql`
       location: String
       website: String
     ): Profile
+    createTweet(content: String): Tweet
   }
 `;

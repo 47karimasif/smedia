@@ -1,5 +1,6 @@
 const userResolver = require("./user");
 const profileResolver = require("./profile");
+const tweetResolver = require("./tweet");
 
 module.exports = {
   User: {
@@ -15,9 +16,11 @@ module.exports = {
   Query: {
     ...userResolver.Query,
     ...profileResolver.Query,
+    ...tweetResolver.Query,
   },
   Mutation: {
     ...userResolver.Mutation,
     ...profileResolver.Mutation,
+    ...tweetResolver.Mutation,
   },
 };
