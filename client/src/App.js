@@ -22,6 +22,7 @@ import Profile from "./pages/Profile";
 
 const httpLink = createHttpLink({
   uri: process.env.REACT_APP_GRAPHQL_URL,
+  // uri: "https://smediadev.herokuapp.com/",
 });
 
 const authLink = setContext(async (req, { headers }) => {

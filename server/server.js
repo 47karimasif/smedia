@@ -33,7 +33,9 @@ const server = new ApolloServer({
   cors: corsOptions,
 });
 
-server.listen().then(({ url }) => {
-  console.log("Server is up at " + url);
+const port = process.env.PORT || 4000;
+
+server.listen(() => {
+  console.log("Server is up at " + port);
 });
 console.log(process.env.NODE_ENV);
