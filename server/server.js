@@ -23,9 +23,14 @@ const schema = applyMiddleware(
   permisions
 );
 
+const corsOptions = {
+  origin: "*",
+};
+
 const server = new ApolloServer({
   schema,
   context: createContext,
+  cors: corsOptions,
 });
 
 server.listen().then(({ url }) => {
