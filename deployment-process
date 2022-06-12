@@ -12,6 +12,8 @@ add Nodejs in buildspec at heroku setting
 https://github.com/timanovsky/subdir-heroku-buildpack.git (add this for subfolder deployment in repo)
 add folder name with PROJECT_PATH as key
 
+add node and npm engines in package json (if it gives peer dependency error)
+
 
 
 client
