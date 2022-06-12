@@ -21,7 +21,7 @@ import { setContext } from "@apollo/client/link/context";
 import Profile from "./pages/Profile";
 
 const httpLink = createHttpLink({
-  uri: "http://localhost:4000",
+  uri: process.env.REACT_APP_GRAPHQL_URL,
 });
 
 const authLink = setContext(async (req, { headers }) => {
@@ -41,6 +41,7 @@ export const client = new ApolloClient({
 });
 
 function App() {
+  console.log(process.env);
   return (
     <Router>
       <ApolloProvider client={client}>
