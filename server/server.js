@@ -33,9 +33,10 @@ const server = new ApolloServer({
   cors: corsOptions,
 });
 
-const port = process.env.PORT || 4000;
-
-server.listen().then(({ url }) => {
-  console.log(`🚀  Server ready at ${url}`);
+server.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {
+  console.log(`
+    🚀  Server is ready at ${url}
+    📭  Query at https://studio.apollographql.com/dev
+  `);
 });
 console.log(process.env.NODE_ENV);
