@@ -1,0 +1,20 @@
+server : 
+
+create a new app on heroku 
+add postgres as add-ons it will generate a variable key pai (can check in settings)
+in ur repo check the name of env variable key if its matches fine
+add corsOption as * it will allow to fetch from any domain (apollo server creation)
+make server listen on dynamic port provided by heroku
+add procfile with rules
+add npm start script in package json
+
+add Nodejs in buildspec at heroku setting
+https://github.com/timanovsky/subdir-heroku-buildpack.git (add this for subfolder deployment in repo)
+add folder name with PROJECT_PATH as key
+
+
+
+client
+
+add env using REACT_APP_VARIABLE
+add this env as key pair for prod in vercel
