@@ -31,3 +31,4 @@ const server = new ApolloServer({
 server.listen().then(({ url }) => {
   console.log("Server is up at " + url);
 });
+console.log(process.env.NODE_ENV);
